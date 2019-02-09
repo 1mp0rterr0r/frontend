@@ -1,3 +1,32 @@
-<p>
-  creator works!
-</p>
+<ng-progress [positionUsing]="'marginLeft'" [direction]="'leftToRightIncreased'" [color]="'red'" [trickleSpeed]="500"
+  [thick]="true" [ease]="'easeInSine'"></ng-progress>
+  <app-header></app-header>
+  <div class="my-5">
+    <div class="card border-0">
+        <article class="card-body mx-auto" style="max-width: 400px;">
+            <h4 class="card-title mt-3 text-center">Create a new module</h4>
+            <!-- <p class="text-center">Get started with your free account</p> -->
+
+            <hr class="my-4">
+
+            <form>
+                <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fas fa-anchor"></i></span>
+                    </div>
+                    <input name="" class="form-control" placeholder="Module Name" type="text">
+                </div> <!-- form-group end.// -->
+                <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="fas fa-file-image"></i> </span>
+                    </div>
+                    <input name="" class="form-control" placeholder="Image Link" type="text">
+                </div>
+            </form>
+
+        </article>
+    </div>
+    <!-- card.// -->
+
+</div>
+  <app-footer></app-footer>
