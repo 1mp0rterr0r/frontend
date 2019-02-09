@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { AdminService } from 'src/app/Service/admin.service';
+import { AuthenticateService } from 'src/app/Service/authentication.service';
 
 @Component({
   selector: 'app-creator',
@@ -7,9 +10,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CreatorComponent implements OnInit {
 
-  constructor() { }
+  constructor(private admin:AdminService,private auth:AuthenticateService) { }
 
   ngOnInit() {
   }
+   
+  onSubmit(value:NgForm){
+    this.admin.module(value).subscribe(res=>{console.log(res),console.log(this.auth.currentUser())})
+
+  }
+
 
 }

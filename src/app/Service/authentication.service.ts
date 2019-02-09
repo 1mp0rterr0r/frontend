@@ -39,6 +39,7 @@ export class AuthenticateService {
     sessionStorage.removeItem('token')
     this.router.navigate(['/'])
   }
+  
   currentUser() {
     let token = sessionStorage.getItem('token')
     let jwthelper = new JwtHelperService();
