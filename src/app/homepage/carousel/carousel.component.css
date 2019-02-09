@@ -1,0 +1,84 @@
+
+@media only screen and (min-width: 600px){
+  .carousel-item{
+    height: 91vh;
+  }
+} 
+
+
+.carousel-caption {
+  bottom: 3rem;
+  z-index: 10;
+}
+
+
+.carousel-item {
+  width: 100%;
+  min-height: 300px;
+  background-color: #777;
+  background: no-repeat center center scroll;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+.carousel-item > img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  height: 32rem;
+}
+.bh{
+  background-size:cover; 
+}
+
+
+/* BOUNCE EFFECT OF DOWN ARROW ON CAROUSEL */
+   
+@keyframes bounce {
+
+  from {
+    top: 90%;
+    animation-timing-function: ease-out;
+  }
+
+  25% {
+    top: 87%;
+    animation-timing-function: ease-in;
+  }
+
+  50% {
+    top: 91%;
+    animation-timing-function: ease-out;
+  }
+
+  75% {
+    top: 88%;
+    animation-timing-function: ease-in;
+  }
+
+  to {
+    top: 90%;
+  }
+
+}
+
+.element {
+  animation-name: bounce;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+}
+
+.box {
+  animation-name: jump;
+  animation-duration: 2s;
+  animation-timing-function: ease-in-out;
+}
+
+.animated {
+  animation-name: bounce, change-bg-color;
+  animation-duration: 3s, 2s;
+  
+}
+
