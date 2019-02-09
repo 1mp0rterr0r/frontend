@@ -5,7 +5,9 @@
       <h1 class="text-center login-title">Sign in</h1>
       <div class="account-wall">
         <img class="profile-img" src="https://lh5.googleusercontent.com/-b0-k99FZlyE/AAAAAAAAAAI/AAAAAAAAAAA/eu7opA4byxI/photo.jpg?sz=120"
-          alt="">
+        >
+          <div *ngIf="invalidLogin" class="alert alert-danger" style="text-align:center">Invalid username or
+              password.</div>
         <form class="form-signin" (ngSubmit)="onSubmit(f.value)" #f="ngForm">
           <input type="text" name="username" class="form-control" placeholder="Email" required autofocus ngModel>
           <input type="password" name="password" class="form-control" placeholder="Password" required ngModel>

@@ -10,7 +10,7 @@ import { AuthenticateService } from 'src/app/Service/authentication.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-
+  invalidLogin=false;
   constructor(private router:Router,private route:ActivatedRoute,private progressService:NgProgress,private auth:AuthenticateService) { }
 
   ngOnInit() {
@@ -27,13 +27,15 @@ export class LoginComponent implements OnInit {
         this.progressService.done();
         let returnUrl = this.route.snapshot.queryParamMap.get('returnUrl')
         if (response === null) {
+          this.invalidLogin=true;
           return;
         } else {
           sessionStorage.setItem('token', response.token)//(key,value)
-          this.router.navigate([returnUrl || '/admin/allproduct'])
+          this.router.navigate([returnUrl || '/admin/modulecreator'])
         }
       },
       error => {
+        this.invalidLogin=true;
     this.progressService.inc(0.3);
         this.progressService.done();
         console.log(error)

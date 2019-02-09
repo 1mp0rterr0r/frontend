@@ -10,6 +10,8 @@
             <hr class="my-4">
 
             <form>
+                    <div *ngIf="invalidLogin" class="alert alert-danger" style="text-align:center">Invalid username or
+                            password.</div>
                 <div class="form-group input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text"><i class="fas fa-anchor"></i></span>
@@ -22,6 +24,9 @@
                     </div>
                     <input name="" class="form-control" placeholder="Image Link" type="text">
                 </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary btn-block"> Sumbit </button>
+                </div> 
             </form>
 
         </article>
