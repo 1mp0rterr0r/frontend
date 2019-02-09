@@ -1,6 +1,6 @@
 <nav class="navbar navbar-static-top navbar-expand-lg navbar-light bg-light " id="header">
   <div class="container">
-    <a class="navbar-brand" routerLink="/home"><img src="assets/logo.png" height="45px"></a>
+    <a class="navbar-brand" routerLink="/home"></a>
     <span class="d-block d-sm-none ml-auto" >
         <span class="nav-item" routerLinkActive="active" *ngIf="authService.loggedin() && authService.currentUser().type==='beneficiary'">
           <a class="nav-link" routerLink="/Cart"><i class="fa fa-shopping-cart" style="font-size:30px"></i>
