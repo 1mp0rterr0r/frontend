@@ -13,14 +13,16 @@ import { Title } from '@angular/platform-browser';
   templateUrl: './add-product.component.html',
   styleUrls: ['./add-product.component.css']
 })
-export class AddProductComponent implements OnInit, AfterContentInit,OnDestroy {
+export class AddProductComponent implements OnInit, AfterContentInit, OnDestroy {
   product = {
     'description': null,
     'type': null,
     'quantity': null,
     'image': null
   };
-  productSubscription:Subscription;
+  lat;
+  lng;
+  productSubscription: Subscription;
   disable = false;
   upload = false;
   selectedFile = null;
@@ -31,7 +33,7 @@ export class AddProductComponent implements OnInit, AfterContentInit,OnDestroy {
   constructor(private route: ActivatedRoute,
     private router: Router, private ps: ProductsService,
     private http: HttpClient, public AuthService: AuthenticateService,
-     private progressService: NgProgress,private titleService:Title) { }
+    private progressService: NgProgress, private titleService: Title) { }
 
   ngOnInit() {
     this.titleService.setTitle('Donate Product')
@@ -39,7 +41,7 @@ export class AddProductComponent implements OnInit, AfterContentInit,OnDestroy {
     this.id = this.route.snapshot.paramMap.get('id')   //to get :id from url
     if (this.id) {
       this.res = true;
-    this.productSubscription=  this.ps.getSingleProduct(this.id)
+      this.productSubscription = this.ps.getSingleProduct(this.id)
         .subscribe(res => { this.product = JSON.parse(res), console.log(this.product) });
     }
   }
@@ -48,7 +50,11 @@ export class AddProductComponent implements OnInit, AfterContentInit,OnDestroy {
     this.progressService.start();
     this.progressService.set(0.1);
     this.progressService.inc(0.2);
-    if (!confirm("Are you sure you want to delete this product?")) return; {
+    if (!confirm("Are you sure you want to delete this product?")) {
+      this.progressService.done();
+      return;
+    }
+    {
       this.ps.deleteProduct(this.id).subscribe(res => {
         this.progressService.done();
         this.router.navigate(['/donor/donatedProduct'])
@@ -64,7 +70,7 @@ export class AddProductComponent implements OnInit, AfterContentInit,OnDestroy {
     this.upload = false;
     this.selectedFile = event.target.files[0];
     if (event.target.files[0]) {
-      console.log(this.selectedFile.size+' '+this.selectedFile.type)
+      console.log(this.selectedFile.size + ' ' + this.selectedFile.type)
       if (this.selectedFile.size >= 10000000) {
         this.size = true;
         if (this.selectedFile.type != "image/jpeg") {
@@ -122,6 +128,7 @@ export class AddProductComponent implements OnInit, AfterContentInit,OnDestroy {
 
 
   onSave(value: NgForm) {
+
     this.disable = true;
     this.progressService.start();
     this.progressService.set(0.1);
@@ -145,21 +152,36 @@ export class AddProductComponent implements OnInit, AfterContentInit,OnDestroy {
           console.log(error);
         });
     } else {
-      this.ps.addProduct(product).subscribe(res => {
-        this.progressService.done();
-        this.router.navigate(['/donor/donatedProduct']);
-        this.disable = false;
-      },
-        error => {
-          this.disable = false;
-          this.progressService.done();
-          console.log(error);
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition((position) => {
+          this.lat = position.coords.latitude,
+            this.lng = position.coords.longitude
+          console.log(position.coords.latitude + " " + position.coords.longitude)
+
+          let value = {
+            product: product,
+            lat: this.lat,
+            lng: this.lng
+          }
+          console.log(value)
+          console.log(this.lat + " " + this.lng)
+          this.ps.addProduct(value).subscribe(res => {
+            this.progressService.done();
+            this.router.navigate(['/donor/donatedProduct']);
+            this.disable = false;
+          },
+            error => {
+              this.disable = false;
+              this.progressService.done();
+              console.log(error);
+            });
         });
+      }
     }
   }
 
-  ngOnDestroy(){
-    if(this.id)
-    this.productSubscription.unsubscribe();
+  ngOnDestroy() {
+    if (this.id)
+      this.productSubscription.unsubscribe();
   }
 }

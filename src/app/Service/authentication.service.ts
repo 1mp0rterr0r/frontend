@@ -6,25 +6,25 @@ import { JwtHelperService } from '@auth0/angular-jwt';
   providedIn: 'root'
 })
 export class AuthenticateService {
-  private _registerUrl = "https://nxv10258.pythonanywhere.com/beneficiary"
-  private _register2Url = "https://nxv10258.pythonanywhere.com/donor"
-  private _loginUrl = "https://nxv10258.pythonanywhere.com/login"
+  private _registerUrl = "https://qmk21872.pythonanywhere.com/beneficiary"
+  private _register2Url = "https://qmk21872.pythonanywhere.com/donor"
+  private _loginUrl = "https://qmk21872.pythonanywhere.com/login"
   constructor(private http: HttpClient, private router: Router) { }
 
   register(user,id) {
-    return this.http.post<any>("https://nxv10258.pythonanywhere.com/"+id+"/beneficiary", user)
+    return this.http.post<any>("https://qmk21872.pythonanywhere.com/"+id+"/beneficiary", user)
   }
 
   registerdonor(user,id) {
-    return this.http.post<any>("https://nxv10258.pythonanywhere.com/"+id+"/donor", user)
+    return this.http.post<any>("https://qmk21872.pythonanywhere.com/"+id+"/donor", user)
   }
 
   loginAdmin(user) {
-    return this.http.post<any>("https://nxv10258.pythonanywhere.com/admin/login", user)
+    return this.http.post<any>("https://qmk21872.pythonanywhere.com/admin/login", user)
   }
 
   login(user,id) {
-    return this.http.post<any>("https://nxv10258.pythonanywhere.com/"+id+"/login", user)
+    return this.http.post<any>("https://qmk21872.pythonanywhere.com/"+id+"/login", user)
   }
 
   loggedin() {

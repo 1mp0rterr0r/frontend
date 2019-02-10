@@ -1,6 +1,8 @@
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
 import { NotFoundComponent } from "./Extra/404/404.component";
+import { SocialfeedsComponent } from "./socialfeeds/socialfeeds.component";
+import { AuthGuard } from "./auth.guard";
 
 const appRoutes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -12,6 +14,7 @@ const appRoutes: Routes = [
   {path:'check-out',loadChildren:'./check-out/check-out.module#CheckOutModule'},
   {path:'user',loadChildren:'./Authentication/authentication.module#AuthenticateModule'},
   // {path:'betterpledge',loadChildren:'./Extra/extra.module#ExtraModule'},
+  {path:'social/feeds',component:SocialfeedsComponent,canActivate:[AuthGuard]},
   {path:'admin',loadChildren:'./admin/admin.module#AdminModule'},
   {path:'**',component:NotFoundComponent}
 ];

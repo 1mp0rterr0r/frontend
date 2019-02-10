@@ -9,10 +9,10 @@ export class HttpService {
   
     changeProfile(value){
         let type= this.auth.currentUser().module
-   return this.http.post('https://nxv10258.pythonanywhere.com/'+type+'/user/update',value)
+   return this.http.post('https://qmk21872.pythonanywhere.com/'+type+'/user/update',value)
     }
     getProfile(){
         let type= this.auth.currentUser().module
-     return this.http.get('https://nxv10258.pythonanywhere.com/'+type+'/user')
+     return this.http.get('https://qmk21872.pythonanywhere.com/'+type+'/user')
     }
 }

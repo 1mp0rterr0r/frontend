@@ -1,6 +1,6 @@
 <nav class="navbar navbar-static-top navbar-expand-lg navbar-light bg-light " id="header">
   <div class="container">
-    <a class="navbar-brand" routerLink="/home"><img src="assets/HHlogo-01.png" width="50px" alt=""></a>
+    <a class="navbar-brand" routerLink="/home"><img src="assets/HHlogo-01.png" width="50px" alt="">Helping Hands</a>
     <span class="d-block d-sm-none ml-auto" >
         <span class="nav-item" routerLinkActive="active" *ngIf="authService.loggedin() && authService.currentUser().type==='beneficiary'">
           <a class="nav-link" routerLink="/Cart"><i class="fa fa-shopping-cart" style="font-size:30px"></i>
@@ -20,11 +20,10 @@
     <div class="collapse navbar-collapse"  id="navbarResponsive" >
       <ul class="navbar-nav ml-auto align-center">
         <li class="nav-item float-left" routerLinkActive="active" (click)="toggleNavbar()">
-          <a class="nav-link" routerLink="/helpinghands/about" *ngIf="!authService.loggedin()"> <i class="fa fa-user"></i> About</a>
+          <a class="nav-link" routerLink="/helpinghands/about" *ngIf="!authService.loggedin()">  About</a>
         </li>
         <li class="nav-item float-left" routerLinkActive="active" (click)="toggleNavbar()">
-          <a class="nav-link" routerLink="/helpinghands/contact" *ngIf="!authService.loggedin()"> <i class="fa fa-phone" aria-hidden="true"></i>
-            Contact</a>
+          <a class="nav-link" routerLink="/helpinghands/contact" *ngIf="!authService.loggedin()">  Contact</a>
         </li>
         <li class="nav-item float-left" routerLinkActive="active" (click)="toggleNavbar()">
           <a class="nav-link" routerLink="/donor/addProduct" *ngIf="authService.loggedin() && authService.currentUser().type==='donor'">Donate
@@ -35,10 +34,12 @@
             Product</a>
         </li>
         <li class="nav-item float-left" routerLinkActive="active" (click)="toggleNavbar()">
-          <a class="nav-link" routerLink="/product/all" *ngIf="authService.loggedin() && authService.currentUser().type==='beneficiary'">Donations</a>
+          <a class="nav-link" routerLink="/product/all" *ngIf="authService.loggedin() && authService.currentUser().type==='beneficiary' && authService.currentUser().status==='approved'">Donations</a>
         </li>
-
-        <li class="nav-item d-none d-sm-block float-left" routerLinkActive="active" *ngIf="authService.loggedin() && authService.currentUser().type==='beneficiary'" (click)="toggleNavbar()">
+        <li class="nav-item float-left" routerLinkActive="active" (click)="toggleNavbar()">
+          <a class="nav-link" routerLink="/product/verification" *ngIf="authService.loggedin() && authService.currentUser().type==='beneficiary' && authService.currentUser().status==='pending'">Dashboard</a>
+        </li>
+        <li class="nav-item d-none d-sm-block float-left" routerLinkActive="active" *ngIf="authService.loggedin() && authService.currentUser().type==='beneficiary' && authService.currentUser().status==='approved'" (click)="toggleNavbar()">
           <a class="nav-link" routerLink="/Cart"><i class="fa fa-shopping-cart" style="font-size:20px"></i> Cart
             <sup>
               <span class="badge badge-warning badge-pill">{{ totalQuantityCount }} </span>

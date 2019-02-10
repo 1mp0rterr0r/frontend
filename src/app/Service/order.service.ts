@@ -12,15 +12,15 @@ export class OrderService {
 
   storeOrder(order){
   let type=this.auth.currentUser().module;
-  return this.http.post('https://nxv10258.pythonanywhere.com/'+type+'/order',order);
+  return this.http.post('https://qmk21872.pythonanywhere.com/'+type+'/order',order);
   }
   showbeneficiaryOrder(){
     let type=this.auth.currentUser().module;
-    return this.http.get('https://nxv10258.pythonanywhere.com/'+type+'/beneficiary/orders');
+    return this.http.get('https://qmk21872.pythonanywhere.com/'+type+'/beneficiary/orders');
   }
   notification(){
     let type=this.auth.currentUser().module;
-    return this.http.get('https://nxv10258.pythonanywhere.com/'+type+'/donor/orders');
+    return this.http.get('https://qmk21872.pythonanywhere.com/'+type+'/donor/orders');
   }
   //donor/orders
   

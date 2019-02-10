@@ -6,3 +6,8 @@ body {
       margin-top: 0.6rem;
   }
 }
+@media screen and (max-width: 600px) {
+  .smallscreenbtnalign {
+      text-align: center;
+  }
+}

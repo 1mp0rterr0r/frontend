@@ -21,11 +21,15 @@ import { BeneficiaryGuard } from './beneficiary.guard';
 import { RouterModule } from '@angular/router';
 import { NotFoundComponent } from './Extra/404/404.component';
 import { NgProgressModule } from 'ngx-progressbar';
+import { SocialfeedsComponent } from './socialfeeds/socialfeeds.component';
+import { AdminGuard } from './admin.guard';
+import { ApprovedGuard } from './approved.guard';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    SocialfeedsComponent
   ],
   imports: [
     BrowserModule,
@@ -42,7 +46,8 @@ import { NgProgressModule } from 'ngx-progressbar';
     AngularFireDatabaseModule
   ],
 
-  providers: [HttpService, OrderService, AuthenticateService, AuthGuard, DonorGuard, BeneficiaryGuard, ShoppingCartService, {
+  providers: [HttpService, OrderService, AuthenticateService, AuthGuard, DonorGuard, BeneficiaryGuard,
+    ApprovedGuard,AdminGuard, ShoppingCartService, {
     provide: HTTP_INTERCEPTORS,
     useClass: TokenInterceptorService,
     multi: true

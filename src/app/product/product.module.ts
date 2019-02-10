@@ -11,6 +11,9 @@ import { BrowserXhr } from "@angular/http";
 import { CoreModule } from "../Core/core.module";
 import { ProductComponent } from './product.component';
 import { RouterModule } from "@angular/router";
+import { VerificationComponent } from './verification/verification.component';
+import { FormComponent } from './form/form.component';
+import { FormsModule } from "@angular/forms";
 
 @NgModule({
     declarations: [
@@ -19,13 +22,16 @@ import { RouterModule } from "@angular/router";
         AllComponent,
         TrendingComponent,
         LightningFastDealComponent,
-        ProductHeaderComponent
+        ProductHeaderComponent,
+        VerificationComponent,
+        FormComponent
     ],
     imports: [
         CommonModule,
         NgProgressModule,
         ProductRoutingModule,
         CoreModule,
+        FormsModule,
         RouterModule
     ],
     providers:[

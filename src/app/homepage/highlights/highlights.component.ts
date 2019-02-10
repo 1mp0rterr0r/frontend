@@ -23,6 +23,10 @@ export class HighlightsComponent implements OnInit {
     console.log(value)
     this.router.navigate(["/user/"+value.name+"/login"])
   }
+
+  social(){
+    this.router.navigate(["/social/feeds"])
+  }
   
 
  

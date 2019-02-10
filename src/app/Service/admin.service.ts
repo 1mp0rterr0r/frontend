@@ -9,11 +9,11 @@ export class AdminService {
   constructor(private http:HttpClient) { }
   
   module(value){
-   return this.http.post("https://nxv10258.pythonanywhere.com/modules",value);
+   return this.http.post("https://qmk21872.pythonanywhere.com/modules",value);
   }
 
   getModule(){
-    return this.http.get("https://nxv10258.pythonanywhere.com/modules")
+    return this.http.get("https://qmk21872.pythonanywhere.com/modules")
   }
 
   

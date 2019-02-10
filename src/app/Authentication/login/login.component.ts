@@ -15,9 +15,9 @@ export class LoginComponent implements OnInit, AfterContentInit {
   message = "Login";
   type = "beneficiary";
   id;
-  constructor(private authService: AuthenticateService, 
+  constructor(private authService: AuthenticateService,
     private router: Router, private route: ActivatedRoute,
-     private progressService: NgProgress,private titleService: Title) { }
+    private progressService: NgProgress, private titleService: Title) { }
 
   ngOnInit() {
     this.id = this.route.snapshot.paramMap.get('id')
@@ -42,20 +42,20 @@ export class LoginComponent implements OnInit, AfterContentInit {
       });
   }
 
-  loginb(){
-    this.router.navigate(["user/"+this.id+"/login"])
-  }
-  
-  logind(){
-    this.router.navigate(["user/"+this.id+"/login-donor"])
-  }
-  
-  registerb(){
-    this.router.navigate(["user/"+this.id+"/register-beneficiary"])
+  loginb() {
+    this.router.navigate(["user/" + this.id + "/login"])
   }
 
-  change(){
-    this.invalidLogin=false;
+  logind() {
+    this.router.navigate(["user/" + this.id + "/login-donor"])
+  }
+
+  registerb() {
+    this.router.navigate(["user/" + this.id + "/register-beneficiary"])
+  }
+
+  change() {
+    this.invalidLogin = false;
   }
 
   onSubmit(form: NgForm) {
@@ -63,7 +63,7 @@ export class LoginComponent implements OnInit, AfterContentInit {
     this.progressService.start();
     this.progressService.set(0.1);
     this.progressService.inc(0.2);
-    this.authService.login(form.value,this.id).subscribe(
+    this.authService.login(form.value, this.id).subscribe(
       response => {
         console.log(response)
         this.progressService.inc(0.3);
@@ -72,13 +72,18 @@ export class LoginComponent implements OnInit, AfterContentInit {
         if (response === null) {
           this.invalidLogin = true;
           return;
-        } else  {
-          sessionStorage.setItem('token', response.token)//(key,value)
-          this.router.navigate([returnUrl || '/product/all'])
+        } else {
+          sessionStorage.setItem('token', response.token)
+          if (this.authService.currentUser().status === 'approved') {
+            this.router.navigate([returnUrl || '/product/all'])
+          }
+          else {
+            this.router.navigate([returnUrl || '/product/verification'])
+          }
         }
       },
       error => {
-    this.progressService.inc(0.3);
+        this.progressService.inc(0.3);
         this.progressService.done();
         console.log(error)
         this.invalidLogin = true;

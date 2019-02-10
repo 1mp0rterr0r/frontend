@@ -31,11 +31,11 @@ export class LoginComponent implements OnInit {
         this.progressService.done();
         let returnUrl = this.route.snapshot.queryParamMap.get('returnUrl')
         if (response === null) {
-          this.invalidLogin=true;
+          this.invalidLogin = true;
           return;
-        } else {
+        } else  {
           sessionStorage.setItem('token', response.token)//(key,value)
-          this.router.navigate([returnUrl || '/admin/modulecreator'])
+          this.router.navigate([returnUrl || '/admin/dashboard'])
         }
       },
       error => {

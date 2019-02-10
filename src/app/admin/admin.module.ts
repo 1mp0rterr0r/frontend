@@ -12,6 +12,7 @@ import { HttpService } from "../Service/http.service";
 import { AdminService } from "../Service/admin.service";
 import { AdminRoutingModule } from "./admin-routing.module";
 import { AdminComponent } from "./admin.component";
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
     declarations:[
@@ -19,7 +20,8 @@ import { AdminComponent } from "./admin.component";
         LoginComponent,
         FeedsComponent,
         CreatorComponent,
-        AllProductsComponent  
+        AllProductsComponent,
+        DashboardComponent  
     ],
     imports:[
         CommonModule,
