@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
           this.invalidLogin = true;
           return;
         } else  {
-          sessionStorage.setItem('token', response.token)//(key,value)
+          sessionStorage.setItem('token', response.token)
           this.router.navigate([returnUrl || '/admin/dashboard'])
         }
       },
