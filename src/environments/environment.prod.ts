@@ -1,11 +1,11 @@
 export const environment = {
   production: true,
   firebase:{
-    apiKey: "AIzaSyC4VYo3yMIWpOz4Jrv32i4btiFJME8l3JE",
-    authDomain: "helpinghands-6df98.firebaseapp.com",
-    databaseURL: "https://helpinghands-6df98.firebaseio.com",
-    projectId: "helpinghands-6df98",
-    storageBucket: "helpinghands-6df98.appspot.com",
-    messagingSenderId: "612865874676"
+    apiKey: "AIzaSyCi1dOQuvl0xtb2lDM16UUCvQo8x-o0qvc",
+    authDomain: "betterpledgegsc.firebaseapp.com",
+    databaseURL: "https://betterpledgegsc.firebaseio.com",
+    projectId: "betterpledgegsc",
+    storageBucket: "betterpledgegsc.appspot.com",
+    messagingSenderId: "981826585030"
   }
 };
