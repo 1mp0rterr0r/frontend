@@ -35,7 +35,7 @@ export class AddProductComponent implements OnInit, AfterContentInit,OnDestroy {
 
   ngOnInit() {
     this.titleService.setTitle('Donate Product')
-    console.log(this.AuthService.currentUser())
+    console.log(this.AuthService.currentUser().module)
     this.id = this.route.snapshot.paramMap.get('id')   //to get :id from url
     if (this.id) {
       this.res = true;
@@ -95,6 +95,7 @@ export class AddProductComponent implements OnInit, AfterContentInit,OnDestroy {
               this.res = true;
               this.upload = false;
             }, error => {
+              console.log(error)
               this.progressService.done();
             }
           );

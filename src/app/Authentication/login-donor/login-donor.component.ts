@@ -10,17 +10,30 @@ import { Title } from '@angular/platform-browser';
   templateUrl: './login-donor.component.html',
   styleUrls: ['./login-donor.component.css']
 })
-export class LoginDonorComponent implements OnInit,AfterContentInit {
-
+export class LoginDonorComponent implements OnInit, AfterContentInit {
+  id;
   invalidLogin: boolean;
   message = "Login"
-  type="donor"
-  constructor(private authService:AuthenticateService,private router:Router,
-    private route:ActivatedRoute,private progressService:NgProgress
-    ,private titleService:Title) { }
+  type = "donor"
+  constructor(private authService: AuthenticateService, private router: Router,
+    private route: ActivatedRoute, private progressService: NgProgress
+    , private titleService: Title) { }
 
   ngOnInit() {
-   this.titleService.setTitle('Donor Login')
+    this.titleService.setTitle('Donor Login')
+    this.id = this.route.snapshot.paramMap.get('id')
+  }
+
+  loginb() {
+    this.router.navigate(["user/" + this.id + "/login"])
+  }
+
+  logind() {
+    this.router.navigate(["user/" + this.id + "/login-donor"])
+  }
+
+  registerd() {
+    this.router.navigate(["user/" + this.id + "/register-donor"])
   }
   ngAfterContentInit() {
     this.router.events
@@ -36,37 +49,40 @@ export class LoginDonorComponent implements OnInit,AfterContentInit {
         ) {
           this.progressService.done();
         }
-      });}
+      });
+  }
 
-      change(){
-        this.invalidLogin=false;
-      }
-  
-  onSubmit(form:NgForm){
-    console.log(form.value);
-   this.progressService.start();
-   this.progressService.set(0.1);
-   this.progressService.inc(0.2);   
-    this.authService.login(form.value).subscribe(
-      response=>{console.log(response)
+  change() {
+    this.invalidLogin = false;
+  }
+
+  onSubmit(form: NgForm) {
+    this.progressService.start();
+    this.progressService.set(0.1);
+    this.progressService.inc(0.2);
+    console.log(form.value)
+    this.authService.login(form.value, this.id).subscribe(
+      response => {
+        console.log(response)
         this.progressService.done();
-        let returnUrl=this.route.snapshot.queryParamMap.get('returnUrl')
-        if( response===null){
+        let returnUrl = this.route.snapshot.queryParamMap.get('returnUrl')
+        if (response === null) {
           this.invalidLogin = true;
           return;
-        }else{
-        sessionStorage.setItem('token',response.token)//(key,value)
-         this.router.navigate([returnUrl || '/donor/addProduct'])}
+        } else {
+          sessionStorage.setItem('token', response.token)//(key,value)
+          this.router.navigate([returnUrl || '/donor/addProduct'])
+        }
       },
-      error=>{
+      error => {
         this.progressService.done();
         console.log(error)
         this.invalidLogin = true;
       }
     )
   }
-  
-  
+
+
 
 
 }

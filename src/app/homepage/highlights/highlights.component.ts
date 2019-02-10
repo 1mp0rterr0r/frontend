@@ -1,41 +1,29 @@
 import { Component, OnInit } from '@angular/core';
 import * as $ from "jquery"
+import { AdminService } from 'src/app/Service/admin.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-highlights',
   templateUrl: './highlights.component.html',
   styleUrls: ['./highlights.component.css']
 })
 export class HighlightsComponent implements OnInit {
+  modules;
 
-  constructor() { }
+  constructor(private admin:AdminService,private router:Router) { }
 
   ngOnInit() {
-    $(document).ready(function() {
-      $("#myCarousel").on("slide.bs.carousel", function(e) {
-        var $e = $(e.relatedTarget);
-        var idx = $e.index();
-        var itemsPerSlide = 3;
-        var totalItems = $(".carousel-item").length;
-    
-        if (idx >= totalItems - (itemsPerSlide - 1)) {
-          var it = itemsPerSlide - (totalItems - idx);
-          for (var i = 0; i < it; i++) {
-            // append slides to end
-            if (e.direction == "left") {
-              $(".carousel-item")
-                .eq(i)
-                .appendTo(".carousel-inner");
-            } else {
-              $(".carousel-item")
-                .eq(0)
-                .appendTo($(this).find(".carousel-inner"));
-            }
-          }
-        }
-      });
-    });
-    
+   this.admin.getModule().subscribe(res=>{
+     console.log(res),
+     this.modules=res['modules'],console.log(this.modules)
+   })
   }
+
+  feed(value){
+    console.log(value)
+    this.router.navigate(["/user/"+value.name+"/login"])
+  }
+  
 
  
    

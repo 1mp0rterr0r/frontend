@@ -1,7 +1,7 @@
 import { Component, OnInit, AfterContentInit } from '@angular/core';
 import { AuthenticateService } from 'src/app/Service/authentication.service';
 import { NgForm } from '@angular/forms';
-import { Router, NavigationEnd, NavigationCancel, NavigationStart } from '@angular/router';
+import { Router, NavigationEnd, NavigationCancel, NavigationStart, ActivatedRoute } from '@angular/router';
 import { NgProgress } from 'ngx-progressbar';
 import { Title } from '@angular/platform-browser';
 
@@ -14,12 +14,13 @@ export class RegisterDonorComponent implements OnInit, AfterContentInit {
   disable=false;
   type = "donor";
   country = "India";
-
-  constructor(private authService: AuthenticateService, private router: Router,
+  id
+  constructor(private authService: AuthenticateService, private router: Router,private route: ActivatedRoute,
      private progressService: NgProgress,private titleService:Title) { }
 
   ngOnInit() {
-    this.titleService.setTitle('Donor Register')
+    this.titleService.setTitle('Donor Register');
+    this.id = this.route.snapshot.paramMap.get('id')
   }
   ngAfterContentInit() {
     this.router.events
@@ -37,17 +38,28 @@ export class RegisterDonorComponent implements OnInit, AfterContentInit {
         }
       });
   }
+
+  loginb(){
+    this.router.navigate(["user/"+this.id+"/register-beneficiary"])
+  }
+  
+  logind(){
+    this.router.navigate(["user/"+this.id+"/register-donor"])
+  }
+
   onSubmit(form: NgForm) {
     this.disable=true;
     console.log(form.value);
+    let value={form:form.value,module:this.id}
+    console.log(value)
     this.progressService.start();
     this.progressService.set(0.1);
     this.progressService.inc(0.2);
-    this.authService.registerdonor(form.value).subscribe(
+    this.authService.registerdonor(value,this.id).subscribe(
       response => {
         console.log(response)
         this.progressService.done();
-        this.router.navigate(['/user/login-donor']);
+        this.router.navigate(['/user/'+this.id+'/login-donor']);
         this.disable=false;
       },
       error => {

@@ -12,10 +12,10 @@
     <div class="col-md-8 mx-auto">
       <ul class="nav nav-tabs">
         <li class="nav-item">
-          <a class="nav-link" routerLink="/user/login">Login </a>
+          <a class="nav-link" routerLink="/user/login" (click)="loginb()"> Login </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" routerLink="/user/login-donor">Are you a donor?</a>
+          <a class="nav-link active" routerLink="/user/login-donor" (click)="logind()">Are you a donor?</a>
         </li>
       </ul>
       <div class="card rounded-0">
@@ -49,7 +49,7 @@
     </div>
   </div>
   <p class="text-center">
-    Don't have an account? <a routerLink="/user/register-donor">Register Here</a>
+    Don't have an account? <a (click)="registerd()">Register Here</a>
   </p>
 </div>
 <app-footer></app-footer>

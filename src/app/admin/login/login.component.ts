@@ -3,6 +3,7 @@ import { NavigationStart, NavigationEnd, NavigationCancel, Router, ActivatedRout
 import { NgProgress } from 'ngx-progressbar';
 import { NgForm } from '@angular/forms';
 import { AuthenticateService } from 'src/app/Service/authentication.service';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-login',
@@ -11,12 +12,15 @@ import { AuthenticateService } from 'src/app/Service/authentication.service';
 })
 export class LoginComponent implements OnInit {
   invalidLogin=false;
-  constructor(private router:Router,private route:ActivatedRoute,private progressService:NgProgress,private auth:AuthenticateService) { }
+  constructor(private router:Router,private route:ActivatedRoute,
+    private progressService:NgProgress,private titleService:Title,
+    private auth:AuthenticateService) { }
 
   ngOnInit() {
   }
   onSubmit(value: NgForm) {
     console.log(value);
+    this.titleService.setTitle('Admin Login')
     this.progressService.start();
     this.progressService.set(0.1);
     this.progressService.inc(0.2);
@@ -41,6 +45,9 @@ export class LoginComponent implements OnInit {
         console.log(error)
       }
     )
+  }
+  change(){
+    this.invalidLogin=false;
   }
   ngAfterContentInit() {
     this.router.events

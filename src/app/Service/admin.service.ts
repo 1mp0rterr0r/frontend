@@ -12,6 +12,10 @@ export class AdminService {
    return this.http.post("https://nxv10258.pythonanywhere.com/modules",value);
   }
 
+  getModule(){
+    return this.http.get("https://nxv10258.pythonanywhere.com/modules")
+  }
+
   
 
 }

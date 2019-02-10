@@ -11,20 +11,20 @@ export class AuthenticateService {
   private _loginUrl = "https://nxv10258.pythonanywhere.com/login"
   constructor(private http: HttpClient, private router: Router) { }
 
-  register(user) {
-    return this.http.post<any>(this._registerUrl, user)
+  register(user,id) {
+    return this.http.post<any>("https://nxv10258.pythonanywhere.com/"+id+"/beneficiary", user)
   }
 
-  registerdonor(user) {
-    return this.http.post<any>(this._register2Url, user)
+  registerdonor(user,id) {
+    return this.http.post<any>("https://nxv10258.pythonanywhere.com/"+id+"/donor", user)
   }
 
   loginAdmin(user) {
     return this.http.post<any>("https://nxv10258.pythonanywhere.com/admin/login", user)
   }
 
-  login(user) {
-    return this.http.post<any>(this._loginUrl, user)
+  login(user,id) {
+    return this.http.post<any>("https://nxv10258.pythonanywhere.com/"+id+"/login", user)
   }
 
   loggedin() {

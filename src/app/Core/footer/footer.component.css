@@ -1,38 +1,50 @@
-footer{
-   background-color: #f7f8f9;
-   font-size: 15px;
-   text-align: left;
-   text-decoration: none;
-    color: black;
-    padding: 2rem;
-  }
-.border-right{
-  border-right: 1px solid #878787 !important;
+body {
+  overflow-x: hidden;
 }
-a{
-  text-decoration: none;
-  color: black;
+.bg-grey {
+  background: #292929;
 }
-a:hover{
-  color: rgb(126, 34, 34);
+.logo-footer {
+  margin-bottom: 40px;
 }
-p{
-  text-align: left 
-}  
-li {
-  cursor: pointer;
+footer {
+  color: grey;
+}
+footer p,
+a {
+  font-size: 12px;
+}
+footer h6 {
+  margin-bottom: 40px;
+  position: relative;
+}
+footer h6:after {
+  position: absolute;
+  content: "";
+  background: grey;
+  width: 12%;
+  height: 1px;
+  left: 0;
+  bottom: -20px;
+}
+footer ul li {
   list-style: none;
-  text-align: left;
+  display: block;
 }
-li:hover {
-  color:rgb(126, 34, 34)
+footer ul {
+  padding-left: 0;
 }
-
-.lead{
-  color: #878787;
+footer ul li a {
+  text-decoration: none;
+  color: grey;
+  text-decoration: none;
+  font-size: 0.9rem;
 }
-  @media screen and (max-width: 600px) {
-    footer {
-      display: none;
-    }
-  }
+a:hover {
+  text-decoration: none;
+  color: #f5f5f5 !important;
+}
+.logo-part {
+  border-right: 1px solid grey;
+  height: 100%;
+}

@@ -30,11 +30,14 @@ export class ShoppingCartComponent implements OnInit, OnDestroy,AfterContentInit
         this.product_ids = Object.keys(cart.items);
         this.productSubscription= this.ps.getAllWithZero().subscribe(res=>{
           this.product=res;
+          console.log(res)
             for(let product in res ){
               console.log(res[product].quantity);
               if(this.getQuantity(res[product])>res[product].quantity){
                   this.delete(res[product]);
               }}  
+            },error=>{
+              console.log(error)
             }
           )}
         }

@@ -13,13 +13,16 @@ import { Title } from '@angular/platform-browser';
 export class LoginComponent implements OnInit, AfterContentInit {
   invalidLogin: boolean;
   message = "Login";
-  type = "beneficiary"
+  type = "beneficiary";
+  id;
   constructor(private authService: AuthenticateService, 
     private router: Router, private route: ActivatedRoute,
      private progressService: NgProgress,private titleService: Title) { }
 
   ngOnInit() {
+    this.id = this.route.snapshot.paramMap.get('id')
     this.titleService.setTitle('Beneficiary Login');
+    console.log(this.id)
   }
 
   ngAfterContentInit() {
@@ -39,6 +42,18 @@ export class LoginComponent implements OnInit, AfterContentInit {
       });
   }
 
+  loginb(){
+    this.router.navigate(["user/"+this.id+"/login"])
+  }
+  
+  logind(){
+    this.router.navigate(["user/"+this.id+"/login-donor"])
+  }
+  
+  registerb(){
+    this.router.navigate(["user/"+this.id+"/register-beneficiary"])
+  }
+
   change(){
     this.invalidLogin=false;
   }
@@ -48,7 +63,7 @@ export class LoginComponent implements OnInit, AfterContentInit {
     this.progressService.start();
     this.progressService.set(0.1);
     this.progressService.inc(0.2);
-    this.authService.login(form.value).subscribe(
+    this.authService.login(form.value,this.id).subscribe(
       response => {
         console.log(response)
         this.progressService.inc(0.3);
@@ -57,7 +72,7 @@ export class LoginComponent implements OnInit, AfterContentInit {
         if (response === null) {
           this.invalidLogin = true;
           return;
-        } else {
+        } else  {
           sessionStorage.setItem('token', response.token)//(key,value)
           this.router.navigate([returnUrl || '/product/all'])
         }

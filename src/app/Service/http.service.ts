@@ -1,15 +1,18 @@
 import { Http } from "@angular/http";
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from "@angular/core";
+import { AuthenticateService } from "./authentication.service";
 @Injectable()
 export class HttpService {
-    constructor(private http: HttpClient) { }
+    constructor(private http: HttpClient,private auth:AuthenticateService) { }
    
   
     changeProfile(value){
-   return this.http.post('https://nxv10258.pythonanywhere.com/user/update',value)
+        let type= this.auth.currentUser().module
+   return this.http.post('https://nxv10258.pythonanywhere.com/'+type+'/user/update',value)
     }
     getProfile(){
-     return this.http.get('https://nxv10258.pythonanywhere.com/user')
+        let type= this.auth.currentUser().module
+     return this.http.get('https://nxv10258.pythonanywhere.com/'+type+'/user')
     }
 }
