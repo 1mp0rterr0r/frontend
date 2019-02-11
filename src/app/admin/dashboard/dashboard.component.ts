@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AdminService } from 'src/app/Service/admin.service';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-dashboard',
@@ -9,9 +10,10 @@ import { AdminService } from 'src/app/Service/admin.service';
 export class DashboardComponent implements OnInit {
    module;
    ngo;
-  constructor(private admin:AdminService) { }
+  constructor(private admin:AdminService,private titleService:Title) { }
 
   ngOnInit() {
+    this.titleService.setTitle('Admin Panel')
     this.admin.getModule().subscribe(res=>{
       console.log(res)
       this.module=res['modules']

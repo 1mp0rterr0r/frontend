@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Marker } from '@agm/core/services/google-maps-types';
 import { ProductsService } from 'src/app/Service/products.service';
 import { SocialfeedsService } from '../Service/socialfeeds.service';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-agm',
@@ -10,7 +11,7 @@ import { SocialfeedsService } from '../Service/socialfeeds.service';
 })
 export class AgmComponent implements OnInit {
 
-  constructor(private product:ProductsService,private social:SocialfeedsService) { }
+  constructor(private product:ProductsService,private social:SocialfeedsService,private titleservice:Title) { }
   zoom: number = 11;
   
   // initial center position for the map
@@ -39,6 +40,7 @@ export class AgmComponent implements OnInit {
   markers2;
 
   ngOnInit() {
+   this.titleservice.setTitle('Map')
    console.log()
    this.product.getAll().subscribe(res=>{
      this.markers=res['listing']

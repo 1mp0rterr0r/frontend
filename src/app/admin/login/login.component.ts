@@ -17,10 +17,10 @@ export class LoginComponent implements OnInit {
     private auth:AuthenticateService) { }
 
   ngOnInit() {
+    this.titleService.setTitle('Admin Login')
   }
   onSubmit(value: NgForm) {
     console.log(value);
-    this.titleService.setTitle('Admin Login')
     this.progressService.start();
     this.progressService.set(0.1);
     this.progressService.inc(0.2);

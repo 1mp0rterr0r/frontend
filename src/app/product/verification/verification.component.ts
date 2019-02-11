@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthenticateService } from 'src/app/Service/authentication.service';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-verification',
@@ -9,9 +10,10 @@ import { AuthenticateService } from 'src/app/Service/authentication.service';
 })
 export class VerificationComponent implements OnInit {
 
-  constructor(private router:Router,public auth:AuthenticateService) { }
+  constructor(private router:Router,public auth:AuthenticateService,private titleService:Title) { }
 
   ngOnInit() {
+    this.titleService.setTitle('Beneficiary Dashboard')
   }
 
   ngo(){

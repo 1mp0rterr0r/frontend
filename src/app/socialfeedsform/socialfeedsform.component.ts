@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SocialfeedsService } from '../Service/socialfeeds.service';
 import { Router } from '@angular/router';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-socialfeedsform',
@@ -11,9 +12,11 @@ export class SocialfeedsformComponent implements OnInit {
   lat: number;
   lng: number;
 
-  constructor(private social: SocialfeedsService, private router: Router) { }
+  constructor(private social: SocialfeedsService,
+     private router: Router,private titleService:Title) { }
 
   ngOnInit() {
+    this.titleService.setTitle('Add Social Feed')
   }
 
   onSave(values) {

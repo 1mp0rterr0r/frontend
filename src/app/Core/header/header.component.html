@@ -37,7 +37,7 @@
           <a class="nav-link" routerLink="/product/all" *ngIf="authService.loggedin() && authService.currentUser().type==='beneficiary' && authService.currentUser().status==='approved'">Donations</a>
         </li>
         <li class="nav-item float-left" routerLinkActive="active" (click)="toggleNavbar()">
-          <a class="nav-link" routerLink="/product/verification" *ngIf="authService.loggedin() && authService.currentUser().type==='beneficiary' && authService.currentUser().status==='pending'">Dashboard</a>
+          <a class="nav-link" routerLink="/product/verification" *ngIf="authService.loggedin() && authService.currentUser().type==='beneficiary' ">Dashboard</a>
         </li>
         <li class="nav-item d-none d-sm-block float-left" routerLinkActive="active" *ngIf="authService.loggedin() && authService.currentUser().type==='beneficiary' && authService.currentUser().status==='approved'" (click)="toggleNavbar()">
           <a class="nav-link" routerLink="/Cart"><i class="fa fa-shopping-cart" style="font-size:20px"></i> Cart

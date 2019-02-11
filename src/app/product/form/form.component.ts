@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgoVerificationService } from 'src/app/Service/ngo-verification.service';
 import { AuthenticateService } from 'src/app/Service/authentication.service';
 import { Router } from '@angular/router';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-form',
@@ -11,9 +12,10 @@ import { Router } from '@angular/router';
 export class FormComponent implements OnInit {
 
   constructor(private verify:NgoVerificationService,private router:Router,
-    private auth:AuthenticateService) { }
+    private auth:AuthenticateService,private titleService:Title) { }
 
   ngOnInit() {
+    this.titleService.setTitle('NGO Details')
   }
   
   onSave(value){
