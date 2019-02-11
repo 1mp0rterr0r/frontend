@@ -25,7 +25,7 @@ export class CreatorComponent implements OnInit {
     this.progressService.set(0.1);
     this.progressService.inc(0.2);
     this.admin.module(value).subscribe(res=>{console.log(res),console.log(this.auth.currentUser())
-    this.router.navigate(['home'])
+    this.router.navigate(['/admin/dashboard'])
     this.progressService.done();
     },error=>{
       this.progressService.done();

@@ -1,91 +1,30 @@
 <app-header></app-header>
 <div class="container">
-  <div class="row">
-      <div class="col-lg-3">
-          <div class="jumbotron bg-white">
-              <h1 class="display-4" style="font-family: 'Staatliches', sans-serif; font-size: 5.5rem; color: #0B69D7;">Social Feed</h1>
-          </div>
-      </div>
-<div class="col-lg-9">
-  <div class="card my-5">
-      <div class="card-body">
-          <h4 class="card-title pb-2" style="font-family: 'Montserrat', sans-serif; font-weight:bolder;"><img
-                  class="rounded-circle" src="https://i.imgur.com/Y05TCxQ.jpg" alt="profile_pic" style="width: 50px;">
-              Lorem Ipsum</h4>
-          <h6 class="card-subtitle mb-2 text-muted">51 minutes ago</h6>
-          <p class="card-text">
-              We are setting up a blood donation camp on Saturday.  </p>
-              <br>
-              Venue: Dehradun, Uttrakhand.
-              <p class="card-text mt-3 font-italic" style="font-size:0.8rem;">
-                  17,222 are intrested.
-              </p>
-        
-          <button type="submit" class="btn btn-outline-light btn-sm" style="color: #0B69D7; font-family: 'Montserrat', sans-serif; font-weight:600;">
-              <i class="fas fa-thumbs-up"></i> Intrested
-          </button>
-          <button type="submit" class="btn btn-outline-light btn-sm" style="color: #0B69D7; font-family: 'Montserrat', sans-serif; font-weight:600;">
-              <i class="fas fa-phone"></i> Contact
-          </button>
-          <button type="submit" class="btn btn-outline-light btn-sm" style="color: #0B69D7; font-family: 'Montserrat', sans-serif; font-weight:600;">
-              <i class="fas fa-map-marker-alt"></i> See on Google Maps
-          </button>
-      </div>
-  </div>
-  <!-- card2 -->
-  <div class="card my-5">
-      <div class="card-body">
-          <h4 class="card-title pb-2" style="font-family: 'Montserrat', sans-serif; font-weight:bolder;"><img
-                  class="rounded-circle" src="https://i.imgur.com/Y05TCxQ.jpg" alt="profile_pic" style="width: 50px;">
-              Lorem Ipsum</h4>
-          <h6 class="card-subtitle mb-2 text-muted">2 days ago</h6>
-          <p class="card-text">
-              Fundraiser event for an orphange.</p>
-              <br>
-              Venue: Delhi, India.
-              <p class="card-text mt-3 font-italic" style="font-size:0.8rem;">
-                  2.1M are intrested.
-              </p>
-          
-          <button type="submit" class="btn btn-outline-light btn-sm" style="color: #0B69D7; font-family: 'Montserrat', sans-serif; font-weight:600;">
-              <i class="fas fa-thumbs-up"></i> Intrested
-          </button>
-          <button type="submit" class="btn btn-outline-light btn-sm" style="color: #0B69D7; font-family: 'Montserrat', sans-serif; font-weight:600;">
-              <i class="fas fa-phone"></i> Contact
-          </button>
-          <button type="submit" class="btn btn-outline-light btn-sm" style="color: #0B69D7; font-family: 'Montserrat', sans-serif; font-weight:600;">
-              <i class="fas fa-map-marker-alt"></i> See on Google Maps
-          </button>
-      </div>
-  </div>
-  <!-- card3 -->
-  <div class="card my-5">
-      <div class="card-body">
-          <h4 class="card-title pb-2" style="font-family: 'Montserrat', sans-serif; font-weight:bolder;"><img
-                  class="rounded-circle" src="https://i.imgur.com/Y05TCxQ.jpg" alt="profile_pic" style="width: 50px;">
-              Lorem Ipsum</h4>
-          <h6 class="card-subtitle mb-2 text-muted">51 minutes ago</h6>
-          <p class="card-text">
-              We are setting up a blood donation camp on Saturday.  </p>
-              <br>
-              Venue: Dehradun, Uttrakhand.
-              <p class="card-text mt-3 font-italic" style="font-size:0.8rem;">
-                  17,222 are intrested.
-              </p>
-        
-          <button type="submit" class="btn btn-outline-light btn-sm" style="color: #0B69D7; font-family: 'Montserrat', sans-serif; font-weight:600;">
-              <i class="fas fa-thumbs-up"></i> Intrested
-          </button>
-          <button type="submit" class="btn btn-outline-light btn-sm" style="color: #0B69D7; font-family: 'Montserrat', sans-serif; font-weight:600;">
-              <i class="fas fa-phone"></i> Contact
-          </button>
-          <button type="submit" class="btn btn-outline-light btn-sm" style="color: #0B69D7; font-family: 'Montserrat', sans-serif; font-weight:600;">
-              <i class="fas fa-map-marker-alt"></i> See on Google Maps
-          </button>
-      </div>
-  </div>
-</div>
-</div>
+    <div class="row">
+        <div class="col-lg-3">
+            <div class="jumbotron bg-white">
+                <h1 class="display-4" style="font-family: 'Staatliches', sans-serif; font-size: 5.5rem; color: #0B69D7;">Social
+                    Feed</h1>
+            </div>
+        </div>
+        <div class="col-lg-9">
+            <div class="card my-5" *ngFor="let f of feeds">
+                <div class="card-body">
+                    <h4 class="card-title pb-2" style="font-family: 'Montserrat', sans-serif; font-weight:bolder;"><img
+                            class="rounded-circle" src="https://i.imgur.com/Y05TCxQ.jpg" alt="profile_pic" style="width: 50px;">
+                        {{f.name}}</h4>
+                    <h6 class="card-subtitle mb-2 text-muted">{{f.time_stamp | date}}</h6>
+                    <p class="card-text">
+                        {{f.description}} </p>
+                    <!-- <br> -->
+                    Venue: Dehradun, Uttrakhand. <br> <br>
+                    <button type="button" routerLink='/map' class="btn btn-outline-light btn-sm" style="color: #0B69D7; font-family: 'Montserrat', sans-serif; font-weight:600;">
+                        <i class="fas fa-map-marker-alt"></i> See on Google Maps
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 <app-footer></app-footer>

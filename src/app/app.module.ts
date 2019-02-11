@@ -24,22 +24,35 @@ import { NgProgressModule } from 'ngx-progressbar';
 import { SocialfeedsComponent } from './socialfeeds/socialfeeds.component';
 import { AdminGuard } from './admin.guard';
 import { ApprovedGuard } from './approved.guard';
+import { AgmComponent } from './agm/agm.component';
+
+import { AgmCoreModule } from '@agm/core';
+import { SocialfeedsformComponent } from './socialfeedsform/socialfeedsform.component';
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     NotFoundComponent,
-    SocialfeedsComponent
+    SocialfeedsComponent,
+    AgmComponent,
+    SocialfeedsformComponent
   ],
   imports: [
-    BrowserModule,
+  BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
     CoreModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyAlAS-bx-M16bI-vm8RUDIE3z02MdhWEFQ'
+    }),
     RouterModule,
     HttpClientModule,
     HttpModule,
+    FormsModule,
     NgProgressModule,
     NgbModule.forRoot(),
     AngularFireModule.initializeApp(environment.firebase),

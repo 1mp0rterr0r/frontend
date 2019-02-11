@@ -30,6 +30,7 @@ export class AddProductComponent implements OnInit, AfterContentInit, OnDestroy 
   size = false;
   type = false;
   id;
+  score;
   constructor(private route: ActivatedRoute,
     private router: Router, private ps: ProductsService,
     private http: HttpClient, public AuthService: AuthenticateService,
@@ -92,19 +93,19 @@ export class AddProductComponent implements OnInit, AfterContentInit, OnDestroy 
         const uploadData = new FormData();
         uploadData.append('file', this.selectedFile, this.selectedFile.name);
         console.log(uploadData);
-        this.http.post('https://6933565f.ngrok.io/image_classify', uploadData)
-          .subscribe(
-            res => {
-              this.progressService.done();
-              console.log(res);
-              this.product.image = res['url'];
-              this.res = true;
-              this.upload = false;
-            }, error => {
-              console.log(error)
-              this.progressService.done();
-            }
-          );
+        // this.http.post('https://b0ba3f3f.ngrok.io/image_classify', uploadData)
+        //   .subscribe(
+        //     res => {
+        //       this.progressService.done();
+        //       console.log(res);
+        //       this.score=res['score'];
+              
+        //       this.upload = false;
+        //     }, error => {
+        //       console.log(error)
+        //       this.progressService.done();
+        //     }
+        //   );
         this.http.post('https://obv53599.pythonanywhere.com/uploadimage', uploadData)
           .subscribe(
             res => {

@@ -21,25 +21,18 @@
       </div>
   </div>
   <div class="row">
-      <div class="col-lg-4">
+      <div class="col-lg-4" *ngFor="let mod of module">
           <div class="card">
-              <img class="card-img-top mx-auto rounded-circle py-3" style="width:25%; height:25%;" src="https://i.imgur.com/piWovvm.jpg"
+              <img class="card-img-top mx-auto rounded-circle py-3" style="width:100px; height:150px;" src="{{mod.image}}"
                   alt="Card image cap">
               <div class="card-body text-center text-muted" style="font-family: 'Montserrat', sans-serif; font-weight:bolder;">
-                  Food </div>
-          </div>
+                  {{mod.name}} </div>
+          </div><br>
       </div>
+      
       <div class="col-lg-4">
-          <div class="card">
-              <img class="card-img-top mx-auto rounded-circle py-3" style="width:25%; height:25%;" src="https://i.imgur.com/u3ITnZM.png"
-                  alt="Card image cap">
-              <div class="card-body text-center text-muted" style="font-family: 'Montserrat', sans-serif; font-weight:bolder;">
-                  Clothes </div>
-          </div>
-      </div>
-      <div class="col-lg-4">
-          <div class="card">
-              <img class="card-img-top mx-auto rounded-circle py-3" style="width:25%; height:25%;" src="https://i.imgur.com/MZVHNFF.jpg"
+          <div class="card" routerLink="/admin/modulecreator">
+              <img class="card-img-top mx-auto rounded-circle py-3" style="width:100px; height:150px;" src="https://i.imgur.com/MZVHNFF.jpg"
                   alt="Card image cap">
               <div class="card-body text-center text-muted" style="font-family: 'Montserrat', sans-serif; font-weight:bolder;">
                   Add another module </div>
@@ -109,35 +102,16 @@
       </div>
   </div>
   <!-- cards for requestfornewmodules -->
-  <div class="row my-4">
-      <div class="col-lg-12 card">
-          <div class="row">
-              <div class="col-lg-9">
+  <div class="row my-4" *ngFor="let n of ngo">
+      <div class="col-lg-12 card"  [routerLink]="['/admin/ngo/',n.id]">
+          <div class="row" >
+              <div class="col-lg-9" >
                   <div>
                       <p class="text-muted text-left mt-3 py-3" style="font-family: 'Montserrat', sans-serif; font-weight:bolder">
-                          Primary Key: 10001
+                          Username: {{n.username}}
                           <br>
-                          Email: saraswati@stsmail.com
-                      </p>
-                  </div>
-              </div>
-              <div class="col-lg-3">
-                  <div class="py-3 smallscreenali">
-                      <img src="https://i.imgur.com/R8MYVhI.jpg" alt="" class="rounded-circle" style="width:25%; height:25;">
-                  </div>
-              </div>
-          </div>
-      </div>
-  </div>
-  <div class="row my-4">
-      <div class="col-lg-12 card">
-          <div class="row">
-              <div class="col-lg-9">
-                  <div>
-                      <p class="text-muted text-left mt-3 py-3" style="font-family: 'Montserrat', sans-serif; font-weight:bolder">
-                          Primary Key: 10002
-                          <br>
-                          Email: mahatma@gdhimail.com
+                          Email: {{n.email}} <br>
+                          Phone:  {{n.phone_no}}
                       </p>
                   </div>
               </div>

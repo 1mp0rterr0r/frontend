@@ -14,10 +14,10 @@ import { ApprovedGuard } from '../approved.guard';
 
 const recipesRoutes: Routes = [
   {path:'',component:ProductComponent,children:[
-  { path: 'all', component: AllComponent, canActivate: [AuthGuard, BeneficiaryGuard] },
-  { path:'verification',component:VerificationComponent,canActivate:[AuthGuard,]},
-  { path:'ngoform',component:FormComponent,canActivate:[AuthGuard,]},
-  { path: 'detail/:id', component: ProductDetailComponent, canActivate: [AuthGuard, BeneficiaryGuard] },
+  { path: 'all', component: AllComponent, canActivate: [AuthGuard, BeneficiaryGuard,ApprovedGuard] },
+  { path:'verification',component:VerificationComponent,canActivate:[AuthGuard,BeneficiaryGuard]},
+  { path:'ngoform',component:FormComponent,canActivate:[AuthGuard,BeneficiaryGuard]},
+  { path: 'detail/:id', component: ProductDetailComponent, canActivate: [AuthGuard, BeneficiaryGuard,ApprovedGuard] },
   { path: 'lightning', component: LightningFastDealComponent, canActivate: [AuthGuard, BeneficiaryGuard] },
   { path: 'trending', component: TrendingComponent, canActivate: [AuthGuard, BeneficiaryGuard] }
   ]},

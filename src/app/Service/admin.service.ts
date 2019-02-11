@@ -16,6 +16,8 @@ export class AdminService {
     return this.http.get("https://qmk21872.pythonanywhere.com/modules")
   }
 
-  
+  pending(){
+    return this.http.get("https://qmk21872.pythonanywhere.com/admin/show_all_pending")
+  }
 
 }

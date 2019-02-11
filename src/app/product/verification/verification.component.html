@@ -105,7 +105,7 @@
             Upload your documents which are verified by the central or state government.
           </p>
         </div>
-        <div class="pl-4 py-4 smallscreenbtnalign text-right" *ngIf="auth.currentUser().status!=='rejected'">
+        <div class="pl-4 py-4 smallscreenbtnalign text-right" *ngIf="auth.currentUser().status!=='rejected' && auth.currentUser().status!=='approved'">
           <button type="button" class="btn btn-primary" (click)="ngo()"> Get Verified </button>
         </div>
       </div>

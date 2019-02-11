@@ -13,6 +13,7 @@ import { AdminService } from "../Service/admin.service";
 import { AdminRoutingModule } from "./admin-routing.module";
 import { AdminComponent } from "./admin.component";
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { NgoComponent } from './ngo/ngo.component';
 
 @NgModule({
     declarations:[
@@ -21,7 +22,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
         FeedsComponent,
         CreatorComponent,
         AllProductsComponent,
-        DashboardComponent  
+        DashboardComponent,
+        NgoComponent  
     ],
     imports:[
         CommonModule,

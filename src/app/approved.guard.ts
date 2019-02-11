@@ -10,11 +10,14 @@ export class ApprovedGuard implements CanActivate {
   constructor(private authService: AuthenticateService, private router: Router) { }
 
   canActivate(route, state: RouterStateSnapshot): boolean {
-    if (this.authService.currentUser().status === 'approved') {
+    if (this.authService.loggedin() && this.authService.currentUser().type==='beneficiary' && this.authService.currentUser().status === 'approved') {
       return true;
-    } else {
+    } else if(this.authService.loggedin() && this.authService.currentUser().type==='beneficiary' && this.authService.currentUser().status === 'pending'){
+      this.router.navigate(['/product/verification'])
+    }
+     else  {
       this.authService.logout();
-      this.router.navigate(['/product/beneficiary'], { queryParams: { returnUrl: state.url } })
+      this.router.navigate(['/user/food/login'], { queryParams: { returnUrl: state.url } })
       return false;
     }
   }
