@@ -46,9 +46,9 @@
         <p *ngIf="selectedFile">{{selectedFile.name}}</p>
         <p *ngIf="type" style="color:red">Type of image should be of (.jpg)</p>
         <p *ngIf="size" style="color:red">Image size should be less than 1MB</p>
-        <p *ngIf="score >= 0.7" style="color:red">This image is not appropriate. Please choose a different one</p>
+        <p *ngIf="score >= 0.4" style="color:red">This image is not appropriate. Please choose a different one</p>
         
-        <button class="btn btn-success" [disabled]="!f.valid || !res || score >= 0.7">Save</button>&nbsp;&nbsp;&nbsp; 
+        <button class="btn btn-success" [disabled]="!f.valid || !res || score >= 0.4">Save</button>&nbsp;&nbsp;&nbsp; 
         <button class="btn btn-danger" type="button" *ngIf="id" (click)="delete()">Delete</button>
       </div>
       <div class="col-md-5">

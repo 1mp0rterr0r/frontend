@@ -93,18 +93,18 @@ export class AddProductComponent implements OnInit, AfterContentInit, OnDestroy 
         const uploadData = new FormData();
         uploadData.append('file', this.selectedFile, this.selectedFile.name);
         console.log(uploadData);
-        // this.http.post('https://b0ba3f3f.ngrok.io/image_classify', uploadData)
-        //   .subscribe(
-        //     res => {
-        //       this.progressService.done();
-        //       console.log(res);
-        //       this.score=res['score'];
-        //       this.upload = false;
-        //     }, error => {
-        //       console.log(error)
-        //       this.progressService.done();
-        //     }
-        //   );
+        this.http.post('https://aa09b677.ngrok.io/image_classify', uploadData)
+          .subscribe(
+            res => {
+              this.progressService.done();
+              console.log(res);
+              this.score=res['score'];
+              this.upload = false;
+            }, error => {
+              console.log(error)
+              this.progressService.done();
+            }
+          );
         this.http.post('https://obv53599.pythonanywhere.com/uploadimage', uploadData)
           .subscribe(
             res => {
