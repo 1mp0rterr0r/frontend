@@ -99,7 +99,6 @@ export class AddProductComponent implements OnInit, AfterContentInit, OnDestroy 
         //       this.progressService.done();
         //       console.log(res);
         //       this.score=res['score'];
-              
         //       this.upload = false;
         //     }, error => {
         //       console.log(error)

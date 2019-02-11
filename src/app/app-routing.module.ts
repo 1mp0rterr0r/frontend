@@ -19,7 +19,7 @@ const appRoutes: Routes = [
   {path:'social/feeds',component:SocialfeedsComponent},
   {path:'social/addfeeds',component:SocialfeedsformComponent,canActivate:[AuthGuard]},
   {path:'admin',loadChildren:'./admin/admin.module#AdminModule'},
-  {path:'map',component:AgmComponent},
+  {path:'map',component:AgmComponent,canActivate:[AuthGuard]},
   {path:'**',component:NotFoundComponent}
 ];
 @NgModule({
